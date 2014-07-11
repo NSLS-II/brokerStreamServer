@@ -3,7 +3,7 @@
     "name": "Short term Diagnostics Control",
     "path": "/asp/arc/ring/dia/short_term_dir/index",
     "data": {
-      "EXAMPLE:DOUBLE_SCALAR": {
+      "EXAMPLE:DOUBLE_SCALAR{TD:1}": {
         "count": 1,
         "meta": {
           "alarm_high": 220.0,
@@ -16,7 +16,7 @@
           "warn_high": 210.0,
           "warn_low": 200.0
         },
-        "name": "EXAMPLE:DOUBLE_SCALAR",
+        "name": "EXAMPLE:DOUBLE_SCALAR{TD:1}",
         "type": 3,
         "values": [
           {

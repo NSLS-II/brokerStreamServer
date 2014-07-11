@@ -12,6 +12,7 @@ from . import codes
 from . import utils
 from .models import ChannelData, ArchiveProperties, Limits
 from .exceptions import ChannelNotFound, ChannelKeyMismatch
+import re
 
 
 class Archiver(object):
@@ -168,8 +169,11 @@ class Archiver(object):
         end_sec, end_nano = utils.sec_and_nano_from_datetime(end)
 
         if scan_archives:
-            self.scan_archives(channels)
-        
+            # search through all the archivers if the channel name contains {} and is not a regular expresion
+            if re.search(r'\{[^0-9]', '|'.join(channels)) or  re.search(r'\{[0-9]+[aA-zZ]', '|'.join(channels)):
+                self.scan_archives(channels=None)
+            else :
+                self.scan_archives(channels)
         if archive_keys is None:
             channels_for_key = defaultdict(list)
             for channel in channels:

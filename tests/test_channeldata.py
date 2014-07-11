@@ -21,7 +21,7 @@ class TestChannelData(unittest.TestCase):
             datetime.datetime(2012, 7, 13, 11, 18, 55, 671259, utc)
         ]
 
-        self.scalar_channel = ChannelData(channel='EXAMPLE:DOUBLE_SCALAR',
+        self.scalar_channel = ChannelData(channel='EXAMPLE:DOUBLE_SCALAR{TD:1}',
                                           values=values, times=times,
                                           statuses=[0, 6, 6, 5],
                                           severities = [0, 1, 1, 2],
@@ -44,7 +44,7 @@ class TestChannelData(unittest.TestCase):
             datetime.datetime(2012, 7, 13, 2, 5, 1, 443589, tz)
         ]
 
-        self.array_channel = ChannelData(channel='EXAMPLE:DOUBLE_SCALAR',
+        self.array_channel = ChannelData(channel='EXAMPLE:DOUBLE_SCALAR{TD:1}',
                                          values=array_values,
                                          times=array_times,
                                          statuses=[0, 6],
@@ -63,7 +63,7 @@ class TestChannelData(unittest.TestCase):
 
         channel_data = self.scalar_channel
 
-        self.assertEqual(channel_data.channel, 'EXAMPLE:DOUBLE_SCALAR')
+        self.assertEqual(channel_data.channel, 'EXAMPLE:DOUBLE_SCALAR{TD:1}')
         self.assertEqual(channel_data.values, [ 200.5, 199.9, 198.7, 196.1 ])
         self.assertEqual(channel_data.times, [
             datetime.datetime(2012, 7, 12, 21, 47, 23, 664000, utc),

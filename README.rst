@@ -6,21 +6,20 @@ address of your Channel Archiver server:
 .. code:: python
 
     from channelarchiver import Archiver
-    archiver = Archiver('http://cr01arc01/cgi-bin/ArchiveDataServer.cgi')
+    archiver = Archiver('http:://xf23id-ca/cgi-bin/ArchiveDataServer.cgi')
 
 You then fetch data with the ``archiver.get()`` method:
 
 .. code:: python
 
-    >>> data = archiver.get('SR00IE01:INJECTION_EFFICIENCY_MONITOR', '2013-08-11', '2013-08-12')
+    >>> data = archiver.get('XF:23IDA-VA:0{DP:1-IP:1}P-I', '2013-08-11', '2014-08-12')
     >>> print data
-                   time        value     status      severity
-    2013-08-11 00:00:02   96.9351518   NO_ALARM      NO_ALARM
-    2013-08-11 00:04:20   94.5171233   NO_ALARM      NO_ALARM
-    2013-08-11 00:08:38   85.0604361  LOW_ALARM         MINOR
+                   time  value    status     severity
+                   2014-06-28 22:11:53      0  NO_ALARM  ARCHIVE_OFF
+
     ...
     >>> data.values
-    [96.935, 94.517, ..., 97.253]
+    [0.0]
 
 The returned ``ChannelData`` object has the following fields:
 
@@ -51,12 +50,12 @@ data objects back:
 
 .. code:: python
 
-    >>> channels = ['SR00TUM01:X_TUNE', 'SR00TUM01:Y_TUNE']
-    >>> x, y = archiver.get(channels, '2013-08-24 09:00', '2013-08-24 19:00')
+    >>> channels = ['XF:23IDA-VA:0{DP:1-IP:1}P-I', ' XF:23IDA-VA:0{DP:1-CCG:1}P-I']
+    >>> x, y = archiver.get(channels, '2013-08-24 09:00', '2014-08-24 19:00')
     >>> print x.values
-    [ 0.291, 0.290, ..., 0.289]
+    [ 0.0]
     >>> print y.values
-    [ 0.216, 0.217, ..., 0.213]
+    []
 
 Times and timezones
 ~~~~~~~~~~~~~~~~~~~
@@ -103,5 +102,4 @@ calling the ``.scan_archives()`` method once and then passing
 .. code:: python
 
     >>> archiver.scan_archives()
-    >>> d1 = archiver.get('SR02GRM01:DOSE_RATE_MONITOR', '2013-07', '2013-08', scan_archives=False)
-    >>> d2 = archiver.get('SR11BCM01:LIFETIME_MONITOR', '2013-07', '2013-08', scan_archives=False)
+    >>> d1 = archiver.get('XF:23IDA-VA:0{DP:1-IP:1}P-I', '2013-07', '2014-08', scan_archives=False)
