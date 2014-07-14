@@ -13,7 +13,8 @@ setup(
     url='https://github.com/RobbieClarken/channelarchiver',
     packages=['channelarchiver'],
     install_requires=[
-        'tzlocal'
+        'tzlocal',
+        'matplotlib'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
