@@ -171,7 +171,8 @@ class Archiver(object):
         if scan_archives:
             # search through all the archivers if the channel name contains {} and is not a regular expresion
             if re.search(r'\{[^0-9]', '|'.join(channels)) or  re.search(r'\{[0-9]+[aA-zZ]', '|'.join(channels)):
-                self.scan_archives(channels=None)
+                search_channels = re.sub('{', '\{', channels)
+                self.scan_archives(re.sub('}', '\}', search_channels))
             else :
                 self.scan_archives(channels)
         if archive_keys is None:
