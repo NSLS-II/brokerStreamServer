@@ -6,7 +6,7 @@ address of your Channel Archiver server:
 .. code:: python
 
     from channelarchiver import Archiver
-    archiver = Archiver('http:://xf23id-ca/cgi-bin/ArchiveDataServer.cgi')
+    archiver = Archiver('http://xf23id-ca/cgi-bin/ArchiveDataServer.cgi')
 
 You then fetch data with the ``archiver.get()`` method:
 
