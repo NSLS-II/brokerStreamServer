@@ -29,7 +29,7 @@ class Archiver(object):
         '''
 
         super(Archiver, self).__init__()
-        self.validate(host)
+        self.is_http_url(host)
         self.server = Server(host)
         self.archiver = self.server.archiver
         self.archives_for_channel = defaultdict(list)
