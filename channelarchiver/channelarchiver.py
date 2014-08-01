@@ -13,6 +13,7 @@ from . import utils
 from .models import ChannelData, ArchiveProperties, Limits
 from .exceptions import ChannelNotFound, ChannelKeyMismatch
 import re
+import urllib
 
 
 class Archiver(object):
@@ -28,8 +29,11 @@ class Archiver(object):
         '''
 
         super(Archiver, self).__init__()
+        self.validate(host)
         self.server = Server(host)
+
         self.archiver = self.server.archiver
+        self.archiver.validate
         self.archives_for_channel = defaultdict(list)
     
     def scan_archives(self, channels=None):
@@ -222,3 +226,6 @@ class Archiver(object):
                 return_data[index] = channel_data
 
         return return_data if not received_str else return_data[0]
+
+    def validate(self, site):
+        urllib.urlopen(site)
