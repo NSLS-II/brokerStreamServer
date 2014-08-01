@@ -13,7 +13,7 @@ from . import utils
 from .models import ChannelData, ArchiveProperties, Limits
 from .exceptions import ChannelNotFound, ChannelKeyMismatch
 import re
-import urllib
+import httplib
 
 
 class Archiver(object):
@@ -225,5 +225,7 @@ class Archiver(object):
 
         return return_data if not received_str else return_data[0]
 
-    def validate(self, site):
-        urllib.urlopen(site)
+    def is_http_url(self, host):
+        if not re.match('https?://(?:www)?(?:[\w-]{2,255})(?:/[\w&%?#-]{1,300})?', host):
+            raise httplib.InvalidURL("malformed url: '%s'" % host)
+
