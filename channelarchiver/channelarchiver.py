@@ -31,9 +31,7 @@ class Archiver(object):
         super(Archiver, self).__init__()
         self.validate(host)
         self.server = Server(host)
-
         self.archiver = self.server.archiver
-        self.archiver.validate
         self.archives_for_channel = defaultdict(list)
     
     def scan_archives(self, channels=None):
