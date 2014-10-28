@@ -64,6 +64,6 @@ while True:
     if data:
         queue.put(data)
         #place the data in the queue that is shared among all client threads
-    start_new_thread(remote_client_thread, (send_connection, queue, )) #start new client thread
+        start_new_thread(remote_client_thread, (send_connection, queue, )) #start new client thread
 
 s.close()
