@@ -1,0 +1,162 @@
+{
+  "1001": {
+    "name": "Short term Diagnostics Control",
+    "path": "/asp/arc/ring/dia/short_term_dir/index",
+    "data": {
+      "EXAMPLE:DOUBLE_SCALAR{TD:1}": {
+        "count": 1,
+        "meta": {
+          "alarm_high": 220.0,
+          "alarm_low": 198.0,
+          "disp_high": 200.0,
+          "disp_low": 0.0,
+          "prec": 3,
+          "type": 1,
+          "units": "mA",
+          "warn_high": 210.0,
+          "warn_low": 200.0
+        },
+        "name": "EXAMPLE:DOUBLE_SCALAR{TD:1}",
+        "type": 3,
+        "values": [
+          {
+            "nano": 663999895,
+            "secs": 1342129643,
+            "sevr": 0,
+            "stat": 0,
+            "value": [
+              200.5
+            ]
+          },
+          {
+            "nano": 443588732,
+            "secs": 1342145101,
+            "sevr": 1,
+            "stat": 6,
+            "value": [
+              199.9
+            ]
+          },
+          {
+            "nano": 806097162,
+            "secs": 1342163971,
+            "sevr": 1,
+            "stat": 6,
+            "value": [
+              198.7
+            ]
+          },
+          {
+            "nano": 671259311,
+            "secs": 1342178335,
+            "sevr": 2,
+            "stat": 5,
+            "value": [
+              196.1
+            ]
+          }
+        ]
+      },
+      "EXAMPLE:INT_WAVEFORM": {
+        "count": 3,
+        "meta": {
+          "alarm_high": 0.0,
+          "alarm_low": 0.0,
+          "disp_high": 20.0,
+          "disp_low": 0.0,
+          "prec": 0,
+          "type": 1,
+          "units": "",
+          "warn_high": 0.0,
+          "warn_low": 0.0
+        },
+        "name": "EXAMPLE:INT_WAVEFORM",
+        "type": 2,
+        "values": [
+          {
+            "nano": 129599795,
+            "secs": 1342134859,
+            "sevr": 0,
+            "stat": 0,
+            "value": [
+              3, 5, 13
+            ]
+          },
+          {
+            "nano": 557222630,
+            "secs": 1342143112,
+            "sevr": 0,
+            "stat": 0,
+            "value": [
+              2, 4, 11
+            ]
+          },
+          {
+            "nano": 558211062,
+            "secs": 1342167978,
+            "sevr": 0,
+            "stat": 0,
+            "value": [
+              0, 7, 1
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "1008": {
+    "name": "Short term Timing Control",
+    "path": "/asp/arc/ring/tim/long_term_dir/index",
+    "data": {
+      "EXAMPLE:ENUM_SCALAR": {
+        "count": 1,
+        "meta": {
+          "states": [
+            "No Action",
+            "Stop",
+            "Continuous",
+            "One Shot",
+            "Pattern Fill",
+            "Pattern Resume",
+            "Next Shot",
+            "Top Up",
+            "Recovery",
+            "Periodic"
+          ],
+          "type": 0
+        },
+        "name": "EXAMPLE:ENUM_SCALAR",
+        "type": 1,
+        "values": [
+          {
+            "nano": 765675810,
+            "secs": 1342132870,
+            "sevr": 0,
+            "stat": 0,
+            "value": [
+              7
+            ]
+          },
+          {
+            "nano": 414257465,
+            "secs": 1342149342,
+            "sevr": 0,
+            "stat": 0,
+            "value": [
+              1
+            ]
+          },
+          {
+            "nano": 623788581,
+            "secs": 1342171223,
+            "sevr": 0,
+            "stat": 0,
+            "value": [
+              8
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
