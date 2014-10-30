@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 
-import setuptools
-from distutils.core import setup, Extension
-from setupext import ext_modules
-import numpy as np
+
+from distutils.core import setup
 
 setup(
     name='broker',
@@ -12,6 +10,4 @@ setup(
     packages=["broker",
               "broker.server",
               ],
-    include_dirs=[np.get_include()],
-    ext_modules=ext_modules
     )
