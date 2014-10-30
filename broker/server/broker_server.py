@@ -25,10 +25,6 @@ def remote_client_thread(conn2, queue):
                 raise
                 # raise Exception('Cannot send data over send socket')
 
-
-
-
-
 HOST = cfg.HOST
 PORT = cfg.PORT
 
@@ -70,7 +66,7 @@ while True:
     if data:
         queue.put(data)
         #place the data in the queue that is shared among all client threads
-        start_new_thread(remote_client_thread, (conn2, queue, )) #start new client thread
+        start_new_thread(remote_client_thread, (conn2, queue, )) #start new client thread as data is received
 
 send_socket.close()
 s.close()
