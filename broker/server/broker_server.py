@@ -12,18 +12,13 @@ def remote_client_thread(conn2, queue):
     Function to create client threads!
     Whenever a client is connected to the server, a dedicated thread is initiated
     """
-    while True:
-        #Receiving from client that this thread is assigned to
-        if queue.empty():
-            break
-        else:
-            data = queue.get(block=True)
-            try:
-                conn2.sendall(data)
-                print 'Data Sent from broker server', data
-            except:
-                raise
-                # raise Exception('Cannot send data over send socket')
+    #Receiving from client that this thread is assigned to
+    if not queue.empty():
+        data = queue.get(block=True)
+        conn2.sendall(data)
+        print 'Data Sent from broker server', len(data)
+        conn2.close()
+
 
 HOST = cfg.HOST
 PORT = cfg.PORT
@@ -38,13 +33,13 @@ try:
 except socket.error as msg:
     print 'Binding the socket failed'
     sys.exit()
-
-try:
-    send_socket.bind((cfg.SEND_HOST, cfg.SEND_PORT))
-except socket.error as msg:
-    print 'Binding the socket failed'
-    sys.exit()
-
+send_socket.bind((cfg.SEND_HOST, cfg.SEND_PORT))
+# try:
+#     send_socket.bind((cfg.SEND_HOST, cfg.SEND_PORT))
+# except socket.error as msg:
+#     print 'Binding the socket failed'
+#     sys.exit()
+#
 print 'Socket bind complete'
 
 #Start listening on socket
@@ -56,12 +51,19 @@ queue = Queue()
 
 
 while True:
+    print('top of the server loop')
     #accept connection and start_threads for each incoming request from collection clients
     # passing a send_server connection instance that will ship the requested data to
     #analysis clients listening
     conn, address = s.accept()
     conn2, address2 = send_socket.accept()
+    accum_data = []
     data = conn.recv(4096)
+    while len(data):
+        accum_data.append(data)
+        data = conn.recv(4096)
+    data = ''.join(accum_data)
+
     print 'Connected with ' + address[0] + ':' + str(address[1])
     if data:
         queue.put(data)
