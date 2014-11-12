@@ -8,11 +8,14 @@ import time
 from nsls2 import core
 import numpy as np
 
+from client import write_json_to_socket
+
 _im_shape = (150, 150)
 center = 2000
 sigma = 1250
 _I_func = lambda count: (1 + np.exp(-((count - center)/sigma) ** 2))
 _cur_position = np.array(np.asarray(_im_shape) / 2, dtype=np.float)
+
 
 def _scale_func(scale, count):
     if not count % 50:
@@ -25,10 +28,8 @@ _scale = 1
 _count = 0
 _decay = 30
 for j in range(center * 2):
+    # this as all synthetic data generation code
     print('spammed {}'.format(j))
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    s.connect((cfg.HOST, cfg.PORT))
     # add a random step
     step = np.random.randn(2) * _scale
     _cur_position += step
@@ -52,11 +53,12 @@ for j in range(center * 2):
 
     a.append({'img': im.tolist(), 'count': j})
 
-    data = json.dumps(a)
-
-    s.sendall(data)
-
-    s.close()
-    time.sleep(.1)
-
     _count += 1
+
+    # ##################################
+    # this is the entirety of the socket nonsense
+    write_json_to_socket(a, cfg.HOST, cfg.PORT)
+    # ##################################
+
+    # sleep for a bit to not clobber everything else
+    time.sleep(.5)
