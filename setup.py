@@ -7,8 +7,9 @@ setup(
     name='broker',
     version='0.0.x',
     author='Brookhaven National Lab',
-    packages=["broker",
-              "broker.server",
-              'client'
+    packages=['broker',
+              'broker.server',
+              'broker.client',
+              'broker.commands',
               ],
     )

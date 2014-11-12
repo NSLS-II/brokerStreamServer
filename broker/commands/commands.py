@@ -86,14 +86,15 @@ def record(event):
     s.sendall(data)
     return True
 
-import random
 
-for i in xrange(2):
-    print i
-    x = random.randint(0,10000)
+def test():
+    import random
 
-    create(header={'scan_id':x , 'tags': ['CSX_Experiment1', 'CSX_Experiment2']} ,
-           event_descriptor={'scan_id': x, 'descriptor_name': 'scan', 'event_type_id': 12, 'tag': 'experimental'})
+    for i in xrange(2):
+        print i
+        x = random.randint(0,10000)
 
+        create(header={'scan_id':x , 'tags': ['CSX_Experiment1', 'CSX_Experiment2']} ,
+               event_descriptor={'scan_id': x, 'descriptor_name': 'scan', 'event_type_id': 12, 'tag': 'experimental'})
 
-    record(event={'scan_id': x, 'descriptor_name': 'scan', 'seq_no': 0})
+        record(event={'scan_id': x, 'descriptor_name': 'scan', 'seq_no': 0})
