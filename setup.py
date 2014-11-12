@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-
+import setuptools
 from distutils.core import setup
 
 setup(
@@ -9,5 +9,6 @@ setup(
     author='Brookhaven National Lab',
     packages=["broker",
               "broker.server",
+              'client'
               ],
     )
