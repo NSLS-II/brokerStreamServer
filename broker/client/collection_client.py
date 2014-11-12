@@ -4,7 +4,7 @@ import numpy as np
 import time
 
 from .. import config as cfg
-from nsls2 import core
+from skxray import core
 
 from . import write_json_to_socket
 
